@@ -326,6 +326,8 @@ func PartitionsWithContext(ctx context.Context, all bool) ([]PartitionStat, erro
 			fstype := fields[0]
 			device := fields[1]
 
+			mountOpts = append(mountOpts, strings.Split(fields[2], ",")...)
+
 			d = PartitionStat{
 				Device:     device,
 				Mountpoint: unescapeFstab(mountPoint),
